@@ -18,7 +18,9 @@ class MovieListing extends StatelessWidget {
         body: Container(
           color: cinemaSurface,
           child: const Center(
-            child: Column(
+              child: Row(children: [
+            SizedBox(width: 50),
+            Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -37,7 +39,7 @@ class MovieListing extends StatelessWidget {
                     style: TextStyle(fontSize: 16)),
               ],
             ),
-          ),
+          ])),
         ));
   }
 }

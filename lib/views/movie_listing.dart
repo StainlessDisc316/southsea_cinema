@@ -27,7 +27,7 @@ class _MovieListingState extends State<MovieListing> {
         ),
         drawer: const NavDrawer(),
         body: Container(
-          color: cinemaSurface,
+          color: cinemaBackground,
           child: Center(
               // Can no longer be constant (stateful widget)
               child: Row(children: [
@@ -38,41 +38,42 @@ class _MovieListingState extends State<MovieListing> {
               children: [
                 SizedBox(height: 35),
                 Text('THE MATRIX (1999) (15)',
-                    style: TextStyle(fontSize: 26, color: Colors.white)),
+                    style: TextStyle(fontSize: 26, color: cinemaFontWhite)),
                 SizedBox(height: 35),
                 Text(
                     'Southsea Cinema Room\n\n'
                     'Friday 2 Oct 2026 18:00 - ends at 20:16',
-                    style: TextStyle(fontSize: 16)),
+                    style: TextStyle(fontSize: 16, color: cinemaFontWhite)),
                 SizedBox(height: 50),
                 Text(
                     'Please note that Discounts / Membership Benefits will '
                     'be applied once you have selected your tickets\n\n'
                     'Select Quantities (Up to 5 in total)',
-                    style: TextStyle(fontSize: 16)),
+                    style: TextStyle(fontSize: 16, color: cinemaFontWhite)),
                 SizedBox(height: 50),
-                Text('Tickets',
-                    style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text('Tickets', style: cinemaHeaderStyle),
                 SizedBox(height: 15),
                 Row(
                   children: [
                     DropdownMenu<int>(
-                        width: 125,
+                        width: 130,
                         trailingIcon: Icon(Icons.keyboard_arrow_down,
-                            color: Colors.black),
+                            color: Colors.black
+                            ),
                         textStyle: TextStyle(fontSize: 16, 
                         color: Colors.black),
                         inputDecorationTheme: InputDecorationTheme(
                           filled: true,
-                          fillColor: Colors.white,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                          fillColor: cinemaFontWhite,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(0),
                             borderSide: BorderSide.none,
                           ),
                         ),
-                        initialSelection: 0,
+                        initialSelection: _ticketCount,
                         onSelected: (int? value) {
                           if (value != null) {
                             setState(() {
@@ -85,20 +86,30 @@ class _MovieListingState extends State<MovieListing> {
                             DropdownMenuEntry<int>(value: i, label: '$i'),
                         ]),
                     SizedBox(width: 10),
-                    Text('Adult (£7.50)', style: TextStyle(fontSize: 16)),
+                    Text('Adult (£7.50)', style: TextStyle(
+                      fontSize: 16, 
+                      color: cinemaFontWhite)),
                   ],
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: 35),
                 FilledButton(
+                    style: FilledButton.styleFrom(minimumSize: Size(80, 45),
+                      backgroundColor: cinemaBrand, shape:LinearBorder()
+                    ),
                     onPressed: () {
                       _addTickets();
                     },
-                    child: Text('ADD TO ORDER')),
+                    child: Text('ADD TO ORDER', style: TextStyle(
+                      fontSize: 18,
+                      color: cinemaFontWhite
+                    )),
+                ),
                 SizedBox(height: 10),
                 Text('${_ticketsAdded.toString()} ticket(s) added to order!',
                     style: TextStyle(
                         fontSize: 11,
-                        color: Colors.blue.withValues(alpha: _triggerOpacity))),
+                        color: cinemaBrand.withValues(
+                          alpha: _triggerOpacity))),
               ],
             ),
           ])),

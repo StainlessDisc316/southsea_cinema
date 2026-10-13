@@ -140,11 +140,14 @@ class _MovieListingState extends State<MovieListing> {
                       label: '$i',
                     ),
                 ]),
-            Text('Adult (£7.50)',
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Text('Adult (£7.50)',
                 style: TextStyle(
                   color: cinemaFontWhite,
                   fontSize: 16,
                 )),
+            ),
           ],
         ),
         SizedBox(height: 35),

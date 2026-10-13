@@ -100,7 +100,9 @@ class _MovieListingState extends State<MovieListing> {
         SizedBox(
           height: 15,
         ),
-        Row(
+        Wrap(
+          spacing: 10,
+          runSpacing: 20,
           children: [
             DropdownMenu<int>(
                 width: 130,
@@ -138,7 +140,6 @@ class _MovieListingState extends State<MovieListing> {
                       label: '$i',
                     ),
                 ]),
-            SizedBox(width: 10),
             Text('Adult (£7.50)',
                 style: TextStyle(
                   color: cinemaFontWhite,

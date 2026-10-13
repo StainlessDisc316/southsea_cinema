@@ -1,0 +1,37 @@
+import 'package:southsea_cinema/models/film.dart';
+
+class FilmRepository {
+  List<Film> getFilms() {
+    return const [
+      Film(
+        id: 'dark-knight-rises',
+        title: 'The Dark Knight Rises',
+        yearReleased: '2012',
+        rating: '12A',
+        room: 'Room 1',
+        screeningDate: 'Friday 16 Oct 2026',
+        screeningTime: '19:00 - ends at 21:45',
+        synopsis:
+            'Bane, an imposing terrorist, attacks Gotham City and disrupts '
+            'its eight-year-long period of peace. This forces Bruce Wayne to '
+            'come out of hiding and don the cape and cowl of Batman again.',
+        adultPrice: 7.50,
+        imagePath: 'assets/images/dknight_poster2.jpg',
+      ),
+      Film(
+        id: 'the-matrix',
+        title: 'The Matrix',
+        yearReleased: '1999',
+        rating: '15',
+        room: 'Room 2',
+        screeningDate: 'Friday 16 Oct 2026',
+        screeningTime: '18:00 - ends at 20:16',
+        synopsis:
+            'A computer hacker discovers that his life is nothing more than '
+            'an elaborate simulation run by an evil AI.',
+        adultPrice: 7.50,
+        imagePath: 'assets/images/matrix_poster.jpg',
+      ),
+    ];
+  }
+}

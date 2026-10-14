@@ -11,7 +11,7 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: cinemaBackground,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -47,18 +47,18 @@ class MovieCard extends StatelessWidget {
               children: [
                 Image.asset(
                   movie.imagePath,
-                  width: 150,
-                  height: 150,
+                  width: 120,
+                  height: 180,
+                  fit: BoxFit.cover,
                 ),
                 const SizedBox(width:16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 8),
                       Text(
                         movie.synopsis,
-                        style: const TextStyle(color: Colors.black), //edit later
+                        style: const TextStyle(color: cinemaFontWhite), //edit later
                       ),
                     ],
                   ),

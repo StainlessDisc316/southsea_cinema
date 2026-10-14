@@ -15,7 +15,7 @@ class MenuScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Southsea Cinema',
+          appTitle,
           style: cinemaHeaderStyle,
         ),
         backgroundColor: cinemaSurface,

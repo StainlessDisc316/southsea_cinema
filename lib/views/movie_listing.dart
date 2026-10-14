@@ -48,7 +48,7 @@ class _MovieListingState extends State<MovieListing> {
                 SizedBox(
                   width: 50,
                 ),
-                content,
+                Expanded(child: content),
               ]),
             );
           }
@@ -73,9 +73,19 @@ class _MovieListingState extends State<MovieListing> {
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 26,
+              fontWeight: FontWeight.bold,
             )),
         SizedBox(
-          height: 35,
+          height: 10,
+        ),
+        Image.asset(
+          widget.movie.imagePath,
+          width: 200,
+          height: 300,
+          fit: BoxFit.cover,
+        ),
+            SizedBox(
+          height: 10,
         ),
         Text(
             '${widget.movie.room}\n\n'

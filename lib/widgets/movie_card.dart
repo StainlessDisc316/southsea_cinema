@@ -11,7 +11,8 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: cinemaBackground,
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      elevation: 0,
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -23,7 +24,7 @@ class MovieCard extends StatelessWidget {
                   movie.title,
                   style: const TextStyle(
                     color: cinemaBrand,
-                    fontSize: 30,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -47,8 +48,8 @@ class MovieCard extends StatelessWidget {
               children: [
                 Image.asset(
                   movie.imagePath,
-                  width: 120,
-                  height: 180,
+                  width: 125,
+                  height: 185,
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(width:16),
@@ -66,19 +67,39 @@ class MovieCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
+            Text(
+              "BOOK TICKETS",
+              style: TextStyle(
+                color: cinemaFontWhite,
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '${movie.screeningDate}  ${movie.screeningTime}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    '${movie.screeningDate}  ${movie.screeningTime}',
+                    style: const TextStyle(
+                      color: cinemaFontWhite,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('BOOK NOW'),
+                FilledButton(
+                  style: FilledButton.styleFrom(
+                    minimumSize: Size.zero,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    backgroundColor: cinemaBrand,
+                    shape: LinearBorder(),
+                  ),
+                  onPressed: () => print('Booked for ${movie.title}'),
+                  child: Text('BOOK NOW',
+                      style: TextStyle(
+                        color: cinemaFontWhite,
+                        fontSize: 16,
+                      )),
                 ),
               ],
             ),

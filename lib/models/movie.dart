@@ -6,6 +6,7 @@ class Movie {
   final String room;
   final String screeningDate;
   final String screeningTime;
+  final String screeningEndTime;
   final String synopsis;
   final double adultPrice;
   final String imagePath;
@@ -18,6 +19,7 @@ class Movie {
     required this.room,
     required this.screeningDate,
     required this.screeningTime,
+    required this.screeningEndTime,
     required this.synopsis,
     required this.adultPrice,
     required this.imagePath,

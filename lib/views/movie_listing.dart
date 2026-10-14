@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatefulWidget {
+  final Movie movie;
   final int maxTickets = 5;
-  const MovieListing({super.key});
+  const MovieListing({
+    super.key,
+    required this.movie,
+  });
 
   @override
   State<MovieListing> createState() {
@@ -39,16 +44,16 @@ class _MovieListingState extends State<MovieListing> {
           debugPrint('Available width: ${constraints.maxWidth}');
           if (constraints.maxWidth > 850) {
             return Center(
-          child: Row(children: [
-            SizedBox(
-              width: 50,
-            ),
-            content,
-          ]),
-        );
-          } 
+              child: Row(children: [
+                SizedBox(
+                  width: 50,
+                ),
+                content,
+              ]),
+            );
+          }
           return SingleChildScrollView(
-           padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: content,
           );
         },
@@ -64,7 +69,7 @@ class _MovieListingState extends State<MovieListing> {
         SizedBox(
           height: 35,
         ),
-        Text('THE MATRIX (1999) (15)',
+        Text('${widget.movie.title} (${widget.movie.yearReleased}) (${widget.movie.rating})',
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 26,
@@ -73,8 +78,8 @@ class _MovieListingState extends State<MovieListing> {
           height: 35,
         ),
         Text(
-            'Southsea Cinema Room\n\n'
-            'Friday 2 Oct 2026 18:00 - ends at 20:16',
+            '${widget.movie.room}\n\n'
+            '${widget.movie.screeningDate} ${widget.movie.screeningTime}',
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 16,
@@ -83,9 +88,7 @@ class _MovieListingState extends State<MovieListing> {
           height: 50,
         ),
         Text(
-            'Please note that Discounts / Membership Benefits will '
-            'be applied once you have selected your tickets\n\n'
-            'Select Quantities (Up to 5 in total)',
+          widget.movie.synopsis,
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 16,
@@ -142,11 +145,11 @@ class _MovieListingState extends State<MovieListing> {
                 ]),
             Padding(
               padding: EdgeInsets.only(top: 10),
-              child: Text('Adult (£7.50)',
-                style: TextStyle(
-                  color: cinemaFontWhite,
-                  fontSize: 16,
-                )),
+              child: Text('Adult (£${widget.movie.adultPrice.toStringAsFixed(2)})',
+                  style: TextStyle(
+                    color: cinemaFontWhite,
+                    fontSize: 16,
+                  )),
             ),
           ],
         ),

@@ -1,9 +1,9 @@
-import 'package:southsea_cinema/models/film.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
-class FilmRepository {
-  List<Film> getFilms() {
+class MovieRepository {
+  List<Movie> getMovies() {
     return const [
-      Film(
+      Movie(
         id: 'dark-knight-rises',
         title: 'The Dark Knight Rises',
         yearReleased: '2012',
@@ -18,7 +18,7 @@ class FilmRepository {
         adultPrice: 7.50,
         imagePath: 'assets/images/dknight_poster2.jpg',
       ),
-      Film(
+      Movie(
         id: 'the-matrix',
         title: 'The Matrix',
         yearReleased: '1999',

@@ -1,4 +1,4 @@
-class Film {
+class Movie {
   final String id;
   final String title;
   final String yearReleased;
@@ -10,7 +10,7 @@ class Film {
   final double adultPrice;
   final String imagePath;
 
-  const Film({
+  const Movie({
     required this.id,
     required this.title,
     required this.yearReleased,

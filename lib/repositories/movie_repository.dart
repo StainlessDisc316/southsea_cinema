@@ -10,8 +10,8 @@ class MovieRepository {
         rating: '12A',
         room: 'Room 1',
         screeningDate: 'Friday 16 Oct 2026',
-        screeningTime: '19:00',
-        screeningEndTime: '- ends at 21:45',
+        screeningTime: '15:00',
+        screeningEndTime: '- ends at 17:45',
         synopsis:
             'Bane, an imposing terrorist, attacks Gotham City and disrupts '
             'its eight-year-long period of peace. This forces Bruce Wayne to '

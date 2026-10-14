@@ -5,7 +5,7 @@ class MovieRepository {
     return const [
       Movie(
         id: 'dark-knight-rises',
-        title: 'The Dark Knight Rises',
+        title: 'THE DARK KNIGHT RISES',
         yearReleased: '2012',
         rating: '12A',
         room: 'Room 1',
@@ -20,7 +20,7 @@ class MovieRepository {
       ),
       Movie(
         id: 'the-matrix',
-        title: 'The Matrix',
+        title: 'THE MATRIX',
         yearReleased: '1999',
         rating: '15',
         room: 'Room 2',

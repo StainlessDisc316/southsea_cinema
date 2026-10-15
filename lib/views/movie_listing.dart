@@ -134,7 +134,7 @@ class _MovieListingState extends State<MovieListing> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 13),
-              child: Text('Tickets (£${widget.movie.adultPrice.toStringAsFixed(2)} each)',
+              child: Text('Tickets (${widget.movie.formattedPrice} each)',
                   style: TextStyle(
                     color: cinemaFontWhite,
                     fontSize: 14,

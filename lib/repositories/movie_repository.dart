@@ -5,7 +5,7 @@ class MovieRepository {
     return const [
       Movie(
         id: 'dark-knight-rises',
-        title: 'THE DARK KNIGHT RISES',
+        title: 'THE DARK KNIGHT RISES ',
         yearReleased: '2012',
         rating: '12A',
         room: 'Southsea Cinema Room',

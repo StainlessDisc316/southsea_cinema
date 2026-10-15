@@ -19,7 +19,7 @@ class MovieCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            Wrap(
               children: [
                 Text(
                   movie.title,
@@ -31,7 +31,7 @@ class MovieCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Padding(
-                  padding: EdgeInsets.only(top:4),
+                  padding: EdgeInsets.only(top:6.5),
                   child: Text(
                     "(${movie.rating})",
                     style: const TextStyle(

@@ -28,6 +28,12 @@ class _MovieListingState extends State<MovieListing> {
     return Scaffold(
       backgroundColor: cinemaBackground,
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(
           appTitle,
           style: cinemaHeaderStyle,
@@ -48,13 +54,22 @@ class _MovieListingState extends State<MovieListing> {
                 SizedBox(
                   width: 50,
                 ),
-                Expanded(child: content),
+                Expanded(
+                  child: Container(
+                    color: cinemaSurface,
+                    child: content
+                    )
+                  ),
               ]),
             );
           }
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: content,
+            padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 16),
+            child: Container(
+              color: cinemaSurface,
+              padding: const EdgeInsets.all(16),
+              child: content
+            ),
           );
         },
       ),
@@ -66,13 +81,10 @@ class _MovieListingState extends State<MovieListing> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 35,
-        ),
         Text('${widget.movie.title} (${widget.movie.yearReleased}) (${widget.movie.rating})',
             style: TextStyle(
               color: cinemaFontWhite,
-              fontSize: 26,
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             )),
         SizedBox(
@@ -80,62 +92,71 @@ class _MovieListingState extends State<MovieListing> {
         ),
         Image.asset(
           widget.movie.imagePath,
-          width: 200,
-          height: 300,
+          width: 100,
+          height: 165,
           fit: BoxFit.cover,
         ),
             SizedBox(
           height: 10,
         ),
         Text(
-            '${widget.movie.room}\n\n'
+            widget.movie.room,
+            style: TextStyle(
+              color: cinemaFontWhite,
+              fontSize: 14,
+            )
+          ),
+        SizedBox(
+          height: 5,
+        ),
+        Text(
             '${widget.movie.screeningDate} ${widget.movie.screeningTime}',
             style: TextStyle(
               color: cinemaFontWhite,
-              fontSize: 16,
-            )),
-        SizedBox(
-          height: 50,
-        ),
+              fontSize: 14,
+            )
+          ),
+      SizedBox(
+        height: 10,
+      ),
         Text(
           widget.movie.synopsis,
             style: TextStyle(
               color: cinemaFontWhite,
-              fontSize: 16,
+              fontSize: 14,
             )),
-        SizedBox(
-          height: 50,
-        ),
-        Text(
-          'Tickets',
-          style: cinemaHeaderStyle,
-        ),
         SizedBox(
           height: 15,
         ),
         Wrap(
-          spacing: 10,
-          runSpacing: 20,
+          spacing: 78,
+          runSpacing: 10,
           children: [
+            Padding(
+              padding: EdgeInsets.only(top: 13),
+              child: Text('Tickets (£${widget.movie.adultPrice.toStringAsFixed(2)} each)',
+                  style: TextStyle(
+                    color: cinemaFontWhite,
+                    fontSize: 14,
+                  )),
+            ),
             DropdownMenu<int>(
-                width: 130,
-                trailingIcon: Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Colors.black,
-                ),
+              width: 118,
                 textStyle: TextStyle(
-                  color: Colors.black,
+                  color: cinemaFontWhite,
                   fontSize: 16,
                 ),
                 inputDecorationTheme: InputDecorationTheme(
                   filled: true,
-                  fillColor: cinemaFontWhite,
+                  fillColor: cinemaSurface,
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 10,
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(0),
-                    borderSide: BorderSide.none,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: cinemaFontMuted,
+                      width: 1,
+                    ),
                   ),
                 ),
                 initialSelection: _ticketCount,
@@ -153,30 +174,22 @@ class _MovieListingState extends State<MovieListing> {
                       label: '$i',
                     ),
                 ]),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Text('Adult (£${widget.movie.adultPrice.toStringAsFixed(2)})',
-                  style: TextStyle(
-                    color: cinemaFontWhite,
-                    fontSize: 16,
-                  )),
-            ),
           ],
         ),
-        SizedBox(height: 35),
+        SizedBox(height: 15),
         FilledButton(
           style: FilledButton.styleFrom(
-            minimumSize: Size(80, 45),
+            minimumSize: Size(95, 40),
             backgroundColor: cinemaBrand,
             shape: LinearBorder(),
           ),
           onPressed: () {
             _addTickets();
           },
-          child: Text('ADD TO ORDER',
+          child: Text('Add to order',
               style: TextStyle(
                 color: cinemaFontWhite,
-                fontSize: 18,
+                fontSize: 14,
               )),
         ),
         SizedBox(height: 10),

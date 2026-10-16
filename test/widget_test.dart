@@ -13,4 +13,21 @@ void main() {
       expect(find.text('BOOK NOW'), findsNWidgets(2));
     });
   });
+
+  testWidgets('Booking button navigates to the correct movie details page',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const SouthseaCinemaApp());
+
+    await tester.tap(find.text('BOOK NOW').first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('0').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('1').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Add to order'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('THE DARK KNIGHT RISES (2012) (12A)'), findsOneWidget);
+    expect(find.text('1 ticket(s) added to order!'), findsOneWidget);
+  });
 }

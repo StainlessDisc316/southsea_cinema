@@ -11,7 +11,6 @@ class MovieRepository {
         room: 'Southsea Cinema Room',
         screeningDate: 'Friday 16 Oct 2026',
         screeningTime: '15:00',
-        screeningEndTime: '- ends at 17:45',
         synopsis:
             'Bane, an imposing terrorist, attacks Gotham City and disrupts '
             'its eight-year-long period of peace. This forces Bruce Wayne to '
@@ -27,7 +26,6 @@ class MovieRepository {
         room: 'Southsea Cinema Room',
         screeningDate: 'Friday 16 Oct 2026',
         screeningTime: '18:00',
-        screeningEndTime: '- ends at 20:16',
         synopsis:
             'A computer hacker discovers that his life is nothing more than '
             'an elaborate simulation run by an evil AI.',

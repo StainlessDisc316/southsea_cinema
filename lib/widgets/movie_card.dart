@@ -4,7 +4,7 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 
 class MovieCard extends StatelessWidget {
-  final Movie movie; 
+  final Movie movie;
 
   const MovieCard({super.key, required this.movie});
 
@@ -31,7 +31,7 @@ class MovieCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Padding(
-                  padding: EdgeInsets.only(top:6.5),
+                  padding: EdgeInsets.only(top: 6.5),
                   child: Text(
                     "(${movie.rating})",
                     style: const TextStyle(
@@ -53,14 +53,15 @@ class MovieCard extends StatelessWidget {
                   height: 185,
                   fit: BoxFit.cover,
                 ),
-                const SizedBox(width:16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         movie.synopsis,
-                        style: const TextStyle(color: cinemaFontWhite), //edit later
+                        style: const TextStyle(
+                            color: cinemaFontWhite), //edit later
                       ),
                     ],
                   ),
@@ -91,7 +92,8 @@ class MovieCard extends StatelessWidget {
                 FilledButton(
                   style: FilledButton.styleFrom(
                     minimumSize: Size.zero,
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 10),
                     backgroundColor: cinemaBrand,
                     shape: LinearBorder(),
                   ),
@@ -117,4 +119,3 @@ class MovieCard extends StatelessWidget {
     );
   }
 }
-

@@ -55,21 +55,16 @@ class _MovieListingState extends State<MovieListing> {
                   width: 50,
                 ),
                 Expanded(
-                  child: Container(
-                    color: cinemaSurface,
-                    child: content
-                    )
-                  ),
+                    child: Container(color: cinemaSurface, child: content)),
               ]),
             );
           }
           return SingleChildScrollView(
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 16),
             child: Container(
-              color: cinemaSurface,
-              padding: const EdgeInsets.all(16),
-              child: content
-            ),
+                color: cinemaSurface,
+                padding: const EdgeInsets.all(16),
+                child: content),
           );
         },
       ),
@@ -81,7 +76,8 @@ class _MovieListingState extends State<MovieListing> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('${widget.movie.title} (${widget.movie.yearReleased}) (${widget.movie.rating})',
+        Text(
+            '${widget.movie.title} (${widget.movie.yearReleased}) (${widget.movie.rating})',
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 22,
@@ -96,31 +92,26 @@ class _MovieListingState extends State<MovieListing> {
           height: 165,
           fit: BoxFit.cover,
         ),
-            SizedBox(
+        SizedBox(
           height: 10,
         ),
-        Text(
-            widget.movie.room,
+        Text(widget.movie.room,
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 14,
-            )
-          ),
+            )),
         SizedBox(
           height: 5,
         ),
-        Text(
-            '${widget.movie.screeningDate} ${widget.movie.screeningTime}',
+        Text('${widget.movie.screeningDate} ${widget.movie.screeningTime}',
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 14,
-            )
-          ),
-      SizedBox(
-        height: 10,
-      ),
-        Text(
-          widget.movie.synopsis,
+            )),
+        SizedBox(
+          height: 10,
+        ),
+        Text(widget.movie.synopsis,
             style: TextStyle(
               color: cinemaFontWhite,
               fontSize: 14,
@@ -141,7 +132,7 @@ class _MovieListingState extends State<MovieListing> {
                   )),
             ),
             DropdownMenu<int>(
-              width: 118,
+                width: 118,
                 textStyle: TextStyle(
                   color: cinemaFontWhite,
                   fontSize: 16,

@@ -23,7 +23,8 @@ void main() {
       expect(firstMovie.room, 'Southsea Cinema Room');
       expect(firstMovie.screeningDate, 'Friday 16 Oct 2026');
       expect(firstMovie.screeningTime, '15:00');
-      expect(firstMovie.synopsis,
+      expect(
+          firstMovie.synopsis,
           'Bane, an imposing terrorist, attacks Gotham City and disrupts '
           'its eight-year-long period of peace. This forces Bruce Wayne to '
           'come out of hiding and don the cape and cowl of Batman again.');
@@ -38,7 +39,8 @@ void main() {
       expect(secondMovie.room, 'Southsea Cinema Room');
       expect(secondMovie.screeningDate, 'Friday 16 Oct 2026');
       expect(secondMovie.screeningTime, '18:00');
-      expect(secondMovie.synopsis,
+      expect(
+          secondMovie.synopsis,
           'A computer hacker discovers that his life is nothing more than an '
           'elaborate simulation run by an evil AI.');
       expect(secondMovie.adultPrice, 7.50);
@@ -61,4 +63,3 @@ void main() {
     expect(movie, isNull);
   });
 }
-

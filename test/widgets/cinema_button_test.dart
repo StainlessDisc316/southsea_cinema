@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:southsea_cinema/widgets/primary_button.dart';
+import 'package:southsea_cinema/widgets/cinema_button.dart';
 
 void main() {
-  testWidgets('PrimaryButton renders its label', (WidgetTester tester) async {
+  testWidgets('CinemaButton renders label', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: PrimaryButton(
-            label: 'Order',
+          body: CinemaButton(
+            label: 'BOOK NOW',
             onPressed: () {},
           ),
         ),
       ),
     );
 
-    expect(find.text('Order'), findsOneWidget);
+    expect(find.text('BOOK NOW'), findsOneWidget);
   });
 
-  testWidgets('PrimaryButton invokes onPressed when tapped',
+  testWidgets('CinemaButton invokes onPressed when tapped',
       (WidgetTester tester) async {
     bool wasPressed = false;
 
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: PrimaryButton(
-            label: 'Order',
+          body: CinemaButton(
+            label: 'Add to order',
             onPressed: () {
               wasPressed = true;
             },
@@ -35,7 +35,7 @@ void main() {
       ),
     );
 
-    await tester.tap(find.text('Order'));
+    await tester.tap(find.text('Add to order'));
     await tester.pump();
 
     expect(wasPressed, isTrue);

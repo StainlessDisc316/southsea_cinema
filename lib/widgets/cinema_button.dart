@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 
-class PrimaryButton extends StatelessWidget {
+class CinemaButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final TextStyle? textStyle;
 
-  const PrimaryButton({
+  const CinemaButton({
     super.key,
     required this.label,
     required this.onPressed,
+    this.textStyle,
   });
 
   @override
@@ -21,9 +23,11 @@ class PrimaryButton extends StatelessWidget {
           borderRadius: BorderRadius.zero,
         ),
       ),
-      
       onPressed: onPressed,
-      child: Text(label),
+      child: Text(
+        label,
+        style: textStyle,
+      ),
     );
   }
 }

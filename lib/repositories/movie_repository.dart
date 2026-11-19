@@ -8,7 +8,7 @@ class MovieRepository {
         title: 'THE DARK KNIGHT RISES',
         yearReleased: '2012',
         rating: '12A',
-        room: 'Southsea Cinema Room',
+        room: 'Southsea Cinema Broom',
         screeningDate: 'Friday 16 Oct 2026',
         screeningTime: '15:00',
         synopsis:

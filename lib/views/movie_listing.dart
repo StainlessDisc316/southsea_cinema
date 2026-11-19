@@ -3,6 +3,8 @@ import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/widgets/cinema_button.dart';
+import 'package:southsea_cinema/models/basket_item.dart';
+import 'package:southsea_cinema/repositories/basket_repository.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
@@ -20,8 +22,6 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int _ticketCount = 0;
-  int _ticketsAdded = 0;
-  double _triggerOpacity = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -167,22 +167,35 @@ class _MovieListingState extends State<MovieListing> {
             _addTickets();
           },
         ),
-        SizedBox(height: 10),
-        Text('${_ticketsAdded.toString()} ticket(s) added to order!',
-            style: TextStyle(
-                fontSize: 11,
-                color: cinemaBrand.withValues(alpha: _triggerOpacity))),
       ],
     );
   }
 
   void _addTickets() {
-    if (_ticketCount != 0 && _ticketCount <= widget.maxTickets) {
-      setState(() {
-        _ticketsAdded += _ticketCount;
-        _triggerOpacity = 1.0; // Show the message
-        _ticketCount = 0; // Reset the ticket count after adding
-      });
+    if (_ticketCount == 0 || _ticketCount > widget.maxTickets) {
+      return;
     }
+
+    BasketRepository.instance.addItem(
+      BasketItem(
+        movie: widget.movie,
+        ticketQuantity: _ticketCount,
+      ),
+    );
+
+    setState(() {
+      _ticketCount = 0;
+    });
+
+  final basket = BasketRepository.instance;
+    debugPrint(
+      basket.getBasketItems()
+          .map((item) =>
+              '${item.ticketQuantity} x ${item.movie.title}')
+          .join(', '),
+    );
+    debugPrint('Ticket count: ${basket.totalTicketCount}');
+    debugPrint('Total: £${basket.getTotal().toStringAsFixed(2)}');
+  
   }
 }

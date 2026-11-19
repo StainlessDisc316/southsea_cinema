@@ -2,9 +2,9 @@ import 'package:southsea_cinema/models/movie.dart';
 
 class BasketItem {
   final Movie movie;
-  final int quantity;
+  final int ticketQuantity;
 
-  const BasketItem({required this.movie, required this.quantity});
+  const BasketItem({required this.movie, required this.ticketQuantity});
 
-  double get lineTotal => movie.adultPrice * quantity;
+  double get lineTotal => movie.adultPrice * ticketQuantity;
 }

@@ -3,8 +3,6 @@ import 'package:southsea_cinema/models/basket_item.dart';
 import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/repositories/basket_repository.dart';
 
-//safety
-
 const Movie testMovie1 = Movie( 
   id: 'basket_test_movie',
   title: 'Basket Test Movie',

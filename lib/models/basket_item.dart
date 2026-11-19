@@ -6,5 +6,5 @@ class BasketItem {
 
   const BasketItem({required this.movie, required this.quantity});
 
-  double get total => movie.adultPrice * quantity;
+  double get lineTotal => movie.adultPrice * quantity;
 }

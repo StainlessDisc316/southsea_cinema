@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:southsea_cinema/repositories/basket_repository.dart';
 import 'package:southsea_cinema/constants.dart';
-import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/basket_item.dart';
+import 'package:southsea_cinema/repositories/basket_repository.dart';
 import 'package:southsea_cinema/widgets/cinema_button.dart';
+import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class BasketView extends StatefulWidget {
   const BasketView({super.key});
@@ -27,40 +27,51 @@ class _BasketViewState extends State<BasketView> {
       ),
     );
   }
-  
+
   Widget _buildLineItem(BasketRepository basket, BasketItem item, int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '${item.ticketQuantity} x ${item.movie.title}',
-                style: const TextStyle(
-                  color: cinemaFontWhite,
-                  fontWeight: FontWeight.w600,
-                  ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                '${item.movie.screeningDate} '
-                '${item.movie.screeningTime}',
-              ),
-              Text(item.movie.room),
-              Text('£${item.lineTotal.toStringAsFixed(2)}'),
-            ],
+          SizedBox(
+            width: 100,
+            child: Text('${item.ticketQuantity} ticket(s)'),
           ),
-        ),
-          IconButton(
-            icon: const Icon(Icons.delete_outline, color: Colors.red),
-            onPressed: () {
-              setState(() {
-                basket.removeItem(index);
-              });
-            },
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${item.ticketQuantity} Standard\n'
+                  '${item.movie.title}, '
+                  '${item.movie.screeningDate}, '
+                  '${item.movie.screeningTime}, '
+                  '${item.movie.room}',
+                  style: const TextStyle(
+                    color: cinemaFontWhite,
+                  ),
+                ),
+                Text('£${item.lineTotal.toStringAsFixed(2)}'),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: 72,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text('£${item.movie.adultPrice.toStringAsFixed(2)}'),
+                IconButton(
+                  icon: const Icon(Icons.delete_outline, color: Colors.red),
+                  onPressed: () {
+                    setState(() {
+                      basket.removeItem(index);
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -74,7 +85,7 @@ class _BasketViewState extends State<BasketView> {
         color: cinemaFontWhite,
         fontWeight: FontWeight.bold,
         fontSize: 16,
-        );
+      );
     } else {
       style = const TextStyle(color: cinemaFontWhite);
     }
@@ -91,7 +102,10 @@ class _BasketViewState extends State<BasketView> {
     );
   }
 
-  Widget _buildBasketList(BasketRepository basket, List<BasketItem> items,) {
+  Widget _buildBasketList(
+    BasketRepository basket,
+    List<BasketItem> items,
+  ) {
     final List<Widget> children = [];
 
     children.add(
@@ -100,7 +114,43 @@ class _BasketViewState extends State<BasketView> {
         style: cinemaHeaderStyle,
       ),
     );
+
     children.add(const SizedBox(height: 16));
+    children.add(
+      const Row(
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              'Item',
+              style: TextStyle(
+                color: cinemaFontWhite,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              'Details',
+              style: TextStyle(
+                color: cinemaFontWhite,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 48,
+            child: Text(
+              'Price',
+              style: TextStyle(
+                color: cinemaFontWhite,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
 
     for (int index = 0; index < items.length; index++) {
       final BasketItem item = items[index];
@@ -108,12 +158,6 @@ class _BasketViewState extends State<BasketView> {
     }
 
     children.add(const SizedBox(height: 24));
-    children.add(
-      _buildTotalRow(
-        'Ticket subtotal',
-        '£${basket.getTotal().toStringAsFixed(2)}',
-      ),
-    );
     children.add(
       _buildTotalRow(
         'Service Charge',
@@ -143,7 +187,7 @@ class _BasketViewState extends State<BasketView> {
         ),
       ),
     );
-    
+
     if (_confirmationMessage.isNotEmpty) {
       children.add(const SizedBox(height: 12));
       children.add(
@@ -160,7 +204,7 @@ class _BasketViewState extends State<BasketView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: children,
-   );
+    );
   }
 
   @override
@@ -192,6 +236,7 @@ class _BasketViewState extends State<BasketView> {
       appBar: AppBar(
         title: const Text(appTitle, style: cinemaHeaderStyle),
       ),
+      drawer: const NavDrawer(),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: content,

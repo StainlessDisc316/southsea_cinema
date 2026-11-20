@@ -36,7 +36,12 @@ class _BasketViewState extends State<BasketView> {
         children: [
           SizedBox(
             width: 100,
-            child: Text('${item.ticketQuantity} ticket(s)'),
+            child: Text('${item.ticketQuantity} Tickets',
+                style: const TextStyle(
+                  color: cinemaBrand,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold)
+                  ),
           ),
           Expanded(
             child: Column(
@@ -52,7 +57,6 @@ class _BasketViewState extends State<BasketView> {
                     color: cinemaFontWhite,
                   ),
                 ),
-                Text('£${item.lineTotal.toStringAsFixed(2)}'),
               ],
             ),
           ),
@@ -61,16 +65,16 @@ class _BasketViewState extends State<BasketView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text('£${item.movie.adultPrice.toStringAsFixed(2)}'),
+                Text('£${item.lineTotal.toStringAsFixed(2)}'),
                 IconButton(
-                  icon: const Icon(Icons.delete_outline, color: Colors.red),
-                  onPressed: () {
-                    setState(() {
-                      basket.removeItem(index);
-                    });
-                  },
-                ),
-              ],
+                icon: const Icon(Icons.delete_outline, color: Colors.red),
+                onPressed: () {
+                  setState(() {
+                    basket.removeItem(index);
+                   });
+                 },
+               ),
+             ],
             ),
           ),
         ],

@@ -143,6 +143,24 @@ class _BasketViewState extends State<BasketView> {
         ),
       ),
     );
+    
+    if (_confirmationMessage.isNotEmpty) {
+      children.add(const SizedBox(height: 12));
+      children.add(
+        Text(
+          _confirmationMessage,
+          style: const TextStyle(
+            color: cinemaFontWhite,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
+   );
   }
 
   @override

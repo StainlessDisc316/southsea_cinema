@@ -61,20 +61,37 @@ class _BasketViewState extends State<BasketView> {
             ),
           ),
           SizedBox(
-            width: 72,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+            width: 120,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text('£${item.lineTotal.toStringAsFixed(2)}'),
-                IconButton(
-                icon: const Icon(Icons.delete_outline, color: Colors.red),
-                onPressed: () {
-                  setState(() {
-                    basket.removeItem(index);
-                   });
-                 },
-               ),
-             ],
+                Text(
+                  '£${item.lineTotal.toStringAsFixed(2)}',
+                  style: const TextStyle(color: cinemaFontWhite),
+                ),
+                const SizedBox(width: 8),
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: DecoratedBox(
+                    decoration: const BoxDecoration(
+                      color: cinemaBrand,
+                    ),
+                    child: IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: const Icon(
+                        Icons.delete_outline,
+                        color: cinemaFontWhite,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          basket.removeItem(index);
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -178,18 +195,30 @@ class _BasketViewState extends State<BasketView> {
     children.add(const SizedBox(height: 24));
 
     children.add(
-      SizedBox(
-        width: double.infinity,
-        child: CinemaButton(
-          label: 'BUY TICKETS',
-          onPressed: () {
-            setState(() {
-              basket.clear();
-              _confirmationMessage = 'Thanks, your tickets are confirmed';
-            });
-          },
-        ),
-      ),
+      Row(
+        children: [
+          Expanded(
+            child: CinemaButton(
+              label: 'UPDATE ORDER',
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+            ),
+          ),
+          const SizedBox(width:110),
+          Expanded(
+            child: CinemaButton(
+              label: 'BUY TICKETS',
+              onPressed: () {
+                setState(() {
+                  basket.clear();
+                  _confirmationMessage = 'Thanks, your tickets are confirmed';
+                });
+              },
+            ),
+          ),
+        ],
+      )
     );
 
     if (_confirmationMessage.isNotEmpty) {

@@ -22,6 +22,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int _ticketCount = 0;
+  String _confirmationMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -167,13 +168,25 @@ class _MovieListingState extends State<MovieListing> {
             _addTickets();
           },
         ),
+        const SizedBox(height: 12),
+        Text(
+          _confirmationMessage,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
 
   void _addTickets() {
-    if (_ticketCount == 0 || _ticketCount > widget.maxTickets) {
+    if (_ticketCount > widget.maxTickets) {
       return;
+    }
+
+    if (_ticketCount == 0) {
+      setState(() {
+      _confirmationMessage = 'Please select at least 1 ticket';
+    });
+    return;
     }
 
     BasketRepository.instance.addItem(
@@ -184,18 +197,10 @@ class _MovieListingState extends State<MovieListing> {
     );
 
     setState(() {
+      _confirmationMessage =
+        'Added $_ticketCount ticket(s) to basket';
       _ticketCount = 0;
     });
-
-  final basket = BasketRepository.instance;
-    debugPrint(
-      basket.getBasketItems()
-          .map((item) =>
-              '${item.ticketQuantity} x ${item.movie.title}')
-          .join(', '),
-    );
-    debugPrint('Ticket count: ${basket.totalTicketCount}');
-    debugPrint('Total: £${basket.getTotal().toStringAsFixed(2)}');
-  
+ 
   }
 }
